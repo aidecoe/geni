@@ -1,0 +1,2 @@
+class GeniException(Exception):
+    pass

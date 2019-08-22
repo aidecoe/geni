@@ -12,6 +12,12 @@ Specification][pep440].
 
 ## [Unreleased]
 
+### Changed
+
+- Try to fetch GPG keys from keys server first before importing from
+  file. Keys fetched from keys server would be more up to date,
+  especially expiry date would be updated.
+
 ### Fixed
 
 - Update expired GPG keys. Gentoo Releng key (that is kept in Geni

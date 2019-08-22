@@ -24,6 +24,10 @@ class GpgAside:
                             drop_prefix("gpg: ", line))
             return output[0] == 0
 
+    def recv_keys(self, *pub_key_ids: str) -> bool:
+        return all([self._call("--recv-key", pub_key_id)
+                    for pub_key_id in pub_key_ids])
+
     def import_pub_keys(self, *pub_key_paths: str) -> bool:
         return all([self._call("--import", path)
                     for path in pub_key_paths])

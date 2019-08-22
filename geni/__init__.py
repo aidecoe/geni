@@ -32,6 +32,9 @@ from .util import (FileInstaller,
 
 GENTOO_MIRROR = "http://mirror.bytemark.co.uk/gentoo"
 
+AUTHOR_KEY_ID = "E420A389C19FB5B7"
+GENTOO_RELENG_KEY_ID = "BB572E0E2D182910"
+
 
 class FileCorruptedError(GeniException):
     pass
@@ -305,10 +308,11 @@ class GeniManageBootstrap(cli.Application):
     def main(self) -> int:  # pylint: disable=arguments-differ
         gpg_home_dir = os.path.join(self.parent.work_dir, "gpghome")
         self.gpg_aside = GpgAside(gpg_home_dir)
-        key_path = pkg_resources.resource_filename(
-            __name__, "data/gentoo-master-keys.asc")
-        if not self.gpg_aside.import_pub_keys(key_path):
-            return 1
+        if not self.gpg_aside.recv_keys(AUTHOR_KEY_ID, GENTOO_RELENG_KEY_ID):
+            key_path = pkg_resources.resource_filename(
+                __name__, "data/gentoo-master-keys.asc")
+            if not self.gpg_aside.import_pub_keys(key_path):
+                return 1
 
         downloads_dir = os.path.join(self.parent.work_dir,
                                      "downloads")

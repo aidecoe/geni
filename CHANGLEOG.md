@@ -10,6 +10,14 @@ Specification][pep440].
 [pep440]: https://www.python.org/dev/peps/pep-0440/
 
 
+## [Unreleased]
+
+### Fixed
+
+- Fix error saying that none of hashes are supported: SHA512, WHIRLPOOL.
+  The error occurs with Python 3.7 only.
+
+
 ## [0.1.0.dev1] - 2019-08-15
 
 ### Added

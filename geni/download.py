@@ -106,7 +106,7 @@ class Digests:
             hash_header_match = cls.hash_header.match(line.strip())
 
             if hash_header_match:
-                hash_name = hash_header_match.group("hash_name")
+                hash_name = hash_header_match.group("hash_name").lower()
 
                 while True:
                     line = digests_file.readline()
@@ -129,8 +129,9 @@ class Digests:
         with open(digests_path, "r") as digests_file:
             all_hashes = self.parse_digests(digests_file)
 
-        self.algorithms_available = (hashlib.algorithms_available &
-                                     all_hashes.keys())
+        algorithms_available = {hash_name.lower()
+                                for hash_name in hashlib.algorithms_available}
+        self.algorithms_available = (algorithms_available & all_hashes.keys())
         if not self.algorithms_available:
             raise ValueError("None of the following hashes are supported: {}"
                              .format(", ".join(all_hashes.keys())))

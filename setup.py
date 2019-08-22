@@ -27,7 +27,7 @@ def read_file(file_name: str) -> str:
 
 setup(
     name="geni",
-    version="0.1.0.dev1",
+    version="0.1.0.dev2",
     description=("Gentoo installer - bootstraps chroot and executes commands "
                  "in chroot "),
     long_description=read_file("README.md"),

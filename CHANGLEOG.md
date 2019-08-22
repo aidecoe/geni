@@ -12,6 +12,9 @@ Specification][pep440].
 
 ## [Unreleased]
 
+
+## [0.1.0.dev2] - 2019-08-22
+
 ### Fixed
 
 - Fix error saying that none of hashes are supported: SHA512, WHIRLPOOL.

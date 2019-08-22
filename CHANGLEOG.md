@@ -12,6 +12,11 @@ Specification][pep440].
 
 ## [Unreleased]
 
+### Fixed
+
+- Update expired GPG keys. Gentoo Releng key (that is kept in Geni
+  package) to verify tarballs digests was expired.
+
 
 ## [0.1.0.dev2] - 2019-08-22
 

@@ -12,6 +12,9 @@ Specification][pep440].
 
 ## [Unreleased]
 
+
+## [0.1.0.dev3] - 2019-08-22
+
 ### Changed
 
 - Try to fetch GPG keys from keys server first before importing from
